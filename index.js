@@ -5,7 +5,7 @@ var sent = Date.now() - 2000;
 module.exports = function (homebridge) {
 	Service = homebridge.hap.Service;
 	Characteristic = homebridge.hap.Characteristic;
-	homebridge.registerAccessory("homebridge-irkit-ext", "IRKitExt", IRKitAccessoryExt);
+	homebridge.registerAccessory("homebridge-irkit-mod", "IRKitMod", IRKitAccessoryExt);
 }
 
 
@@ -32,7 +32,7 @@ IRKitAccessoryExt.prototype = {
 				path: "/messages",
 				method: "POST",
 				headers: {
-					"X-Requested-With": "homebridge-irkit-ext",
+					"X-Requested-With": "homebridge-irkit-mod",
 					"Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
 					"Content-Length": formData.length
 				}

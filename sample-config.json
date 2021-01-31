@@ -12,7 +12,7 @@
 
     "accessories": [
         {
-            "accessory": "IRKitExt",
+            "accessory": "IRKitMod",
             "name": "irkit control device",
             "irkit_host": "irkitxxxxx.local",
             "on_form": {"format":"raw","freq":38,"data":[]},
