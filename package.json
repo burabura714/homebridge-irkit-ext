@@ -1,23 +1,29 @@
 {
   "name": "homebridge-irkit-mod",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "irkit plugin for homebridge: https://github.com/nfarina/homebridge",
+  "repository": "https://github.com/burabura714/homebridge-irkit-ext",
+  "main": "index.js",
+  "author": "burabura714",
   "license": "ISC",
   "keywords": [
     "homebridge-plugin"
   ],
   "engines": {
-    "node": ">=0.12.0",
-    "homebridge": ">=0.2.0"
+    "node": ">=10.16.0",
+    "homebridge": ">=0.4.50"
   },
-  "author": {
-    "name": "burabura714"
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:burabura714/homebridge-irkit-ext.git"
+  "scripts": {
+    "lint": "eslint ./**/*.js",
+    "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "request": "^2.65.0"
+    "await-semaphore": "^0.1.3"
   }
 }
