@@ -9,7 +9,7 @@ http://getirkit.com/
 # Installation
 
 1. Install homebridge using: sudo npm install -g homebridge
-2. Install this plugin using: sudo npm install -g homebridge-irkit
+2. Install this plugin using: sudo npm install -g homebridge-irkit-mod
 3. Update your configuration file. See sample-config.json in this repository for a sample. 
 
 # Configuration
@@ -19,7 +19,7 @@ Configuration sample:
  ```
 "accessories": [
         {
-            "accessory": "IRKit",
+            "accessory": "IRKitMod",
             "name": "irkit control device",
             "irkit_host": "irkitxxxxx.local",
             "on_form": {"format":"raw","freq":38,"data":[]},
