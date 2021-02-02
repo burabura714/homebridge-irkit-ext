@@ -2,6 +2,8 @@ var http = require('http');
 const fs = require('fs');
 var semaphore = require('await-semaphore');
 var mutex = new semaphore.Mutex();
+var wait = 2000;
+var sent = Date.now() - wait;
 
 let Service, Characteristic;
 
@@ -239,7 +241,6 @@ class IRKitAccessory {
   async httpRequestSerialized(host, form, callback, statehandler) {
 	let release = await mutex.acquire();
 	this.httpRequest(this.irkit_host, form, function (response) {
-		release();
 		if (response.statusCode == 200) {
 			this.log('IRKit power function succeeded!');
 			statehandler();
@@ -250,6 +251,12 @@ class IRKitAccessory {
 
 			callback('error');
 		}
+		let interval = Date.now() - sent;
+		if (interval < wait) {
+			sleep(wait - interval);
+		}
+		sent = Date.now();
+		release();
 	}.bind(this));
   }
 
@@ -274,4 +281,10 @@ class IRKitAccessory {
 	this.log("request sent.");
 	req.end();
   }
+}
+
+function sleep(msec) {
+	return new Promise(function(resolve) {
+	   setTimeout(function() {resolve()}, msec);
+	})
 }
