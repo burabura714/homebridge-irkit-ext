@@ -1,6 +1,6 @@
 {
   "name": "homebridge-irkit-mod",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "irkit plugin for homebridge: https://github.com/nfarina/homebridge",
   "repository": "https://github.com/burabura714/homebridge-irkit-ext",
   "main": "index.js",
