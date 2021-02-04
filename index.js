@@ -2,8 +2,7 @@ var http = require('http');
 const fs = require('fs');
 var semaphore = require('await-semaphore');
 var mutex = new semaphore.Mutex();
-var wait = 2000;
-var sent = Date.now() - wait;
+var sent = 0;
 
 let Service, Characteristic;
 
@@ -251,6 +250,7 @@ class IRKitAccessory {
 
 			callback('error');
 		}
+		let wait = form.data.reduce((sum, element) => sum + element, 0) / 1000;
 		let interval = Date.now() - sent;
 		if (interval < wait) {
 			sleep(wait - interval);
@@ -286,5 +286,5 @@ class IRKitAccessory {
 function sleep(msec) {
 	return new Promise(function(resolve) {
 	   setTimeout(function() {resolve()}, msec);
-	})
+	});
 }
