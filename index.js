@@ -42,9 +42,9 @@ class IRKitAccessory {
 	this.heater_form = config.heater_form;
 	this.cooler_form = config.cooler_form;
 	this.auto_form = config.auto_form;
-	this.temperature = 20;
-	this.heat_target = config.heat_target;
-	this.cool_target = config.cool_target;
+	this.temperature = 20.0;
+	this.heat_target = config.heat_target ? config.heat_target : 27.0;
+	this.cool_target = config.cool_target ? config.cool_target : 21.0;
 
     if (api) {
       this.api = api;
@@ -155,7 +155,7 @@ class IRKitAccessory {
   handleCurrentHeaterCoolerStateGet(callback) {
     this.log.debug('Triggered GET CurrentHeaterCoolerState');
 
-    callback(null, this.CurrentHeaterCoolerState);
+    callback(null, this.aircon_state);
   }
 
   /**
@@ -183,7 +183,7 @@ class IRKitAccessory {
     this.log.debug('Triggered GET CurrentTemperature');
 
 	if (this.config.temperature_file) {
-		this.temperature = fs.readFileSync(this.config.temperature_file);
+		this.temperature = parseFloat(fs.readFileSync(this.config.temperature_file));
 	}
 	
     callback(null, this.temperature);
