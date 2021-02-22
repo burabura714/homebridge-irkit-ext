@@ -143,6 +143,7 @@ class IRKitAccessory {
 		}
 	} else {
 		form = this.off_form;
+		state_to_change = Characteristic.CurrentHeaterCoolerState.IDLE;
 		this.log("Setting power state to off");
 	}
 
